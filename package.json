@@ -1,10 +1,10 @@
 {
   "name": "miro-templating",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create new Miro boards based on a template. Includes tools to create & test the templates.",
   "license": "UNLICENSED",
   "main": "dist/index.js",
-  "types": "dist/index.d.js",
+  "types": "dist/index.d.ts",
   "bugs": {
     "url": "https://github.com/Collaborne/miro-templating/issues"
   },
@@ -21,6 +21,12 @@
     "create-template": "TS_NODE_FILES=true node -r ts-node/register ${_NODE_ARGS} tools/create-template.ts",
     "query-board": "TS_NODE_FILES=true node -r ts-node/register ${_NODE_ARGS} tools/query-board.ts"
   },
+  "files": [
+    "src/",
+    "tslint.json",
+    "tsconfig*.json",
+    "dist/"
+  ],
   "engines": {
     "node": ">=12.13.0"
   },
