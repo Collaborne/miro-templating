@@ -21,6 +21,12 @@
     "create-template": "TS_NODE_FILES=true node -r ts-node/register ${_NODE_ARGS} tools/create-template.ts",
     "query-board": "TS_NODE_FILES=true node -r ts-node/register ${_NODE_ARGS} tools/query-board.ts"
   },
+  "files": [
+    "src/",
+    "tslint.json",
+    "tsconfig*.json",
+    "dist/"
+  ],
   "engines": {
     "node": ">=12.13.0"
   },
