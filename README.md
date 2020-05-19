@@ -76,10 +76,10 @@ The following template snippet includes the project name into the text of the wi
 
 ```json
 {
-	"widgets": [
-		{
-			"type": "shape",
-			"text": "Board for ${PROJECT_NAME}",
+  "widgets": [
+    {
+      "type": "shape",
+      "text": "Board for ${PROJECT_NAME}",
 ```
 
 The value of the placeholder is extracted from the file [sample/context.json]. This is for testing only. In production usage, set these values programmatically.
@@ -94,14 +94,14 @@ The following template declares a target area:
 
 ```json
 {
-	"widgets": [
-		{
-			"type": "shape",
-			"metadata": {
-				"${APP_ID}": {
-					"import_type": "idea"
-				}
-			}
+  "widgets": [
+    {
+      "type": "shape",
+      "metadata": {
+        "${APP_ID}": {
+          "import_type": "idea"
+        }
+      }
 ```
 
 You can define multiple target areas in a template. These can have the same - or different - values for `import_type`.
@@ -127,9 +127,9 @@ MIRO_TOKEN=<TOKEN> MIRO_CLIENT_ID=<CLIENT_ID> BOARD_ID=<BOARD_ID> npm run query-
 All results are marked with the `import_type` of the target area:
 ```
 {
-	hits: [
-		{ type: 'idea', value: 'Idea 1' },
-		{ type: 'idea', value: 'Idea 2' }
-	]
+  hits: [
+    { type: 'idea', value: 'Idea 1' },
+    { type: 'idea', value: 'Idea 2' }
+  ]
 }
 ```
