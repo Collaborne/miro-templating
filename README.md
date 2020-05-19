@@ -1,5 +1,12 @@
 # miro-templating
-Create new Miro boards based on a template. Includes tools to create &amp; test the templates.
+
+[Miro.com](https://www.miro.com) is an online whiteboard for visual collaboration. It comes with a great UI to build and collaborate canvases. Miro offers as well an API to programmatically create new boards.
+
+This library allows the templating of Miro boards:
+- Create new boards via the Miro API based on a JSON template - including placeholders that are replaced during board creation
+- Query specific user created data within the Miro board, e.g. ideas posted in a specific box within the Miro board
+
+The repository contains as well tools to create & test the templates.
 
 ## Install
 
