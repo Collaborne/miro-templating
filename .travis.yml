@@ -1,0 +1,23 @@
+dist: bionic
+group: beta
+language: node_js
+node_js:
+- lts/carbon
+cache:
+  directories:
+  - node_modules
+env:
+  global:
+  - secure: "6gLNO4TzvfksLiL5II3kQJcKs2zRIiHfprFlGBtvEXreDGSxUamkqkQYlvG+41HTUa6mC7U0q9us+CsQ1ayFszuMuUIwRriqFJ7yUo2WOTpSgM4evlRKjGwybWqLlJYjdeu0oxHMEqMrnk5AP7Q67bGwt6i8PQClMF/QKwL45DuN/vBZEU5mkTxoOyIC9pBC8XA6J0vw12YdIeOsH6W3KCKUxBlEFznOVUvwZ3EBmoUxDp7EkJPLtL9dlydElE7LvIj1eGGl410nszp01cA7bPUsggOjeWRgOigFyptimov9NqpnD+MVPNd19ENEVD1Ayj5KsTiOJFNrv/CSYOucKcFfuuR8gbsrEoFZRngFtS4jEbIU6wUfC036yGwR4Wpp0vd5T7f9FVvE7LssYDCjg1gJD8YRQMXK9wOc4xFC6XlgCgT62oJQ+azkYUpmZrfbSjPSecUxgXAt5WncDiRgGaFTsrOZFigROT4yG/UwOBn+e/g8L7FUMs08hjVxCIFzVh+9IqCYnsIM649hgLJRXUc1sYjlbemjCVkzIry+c6/neJkpNOFR6RLUkjlU2Ss/xFh/hgKS2RkvLX7pXNvn3v5Z+nMsmb93ikqkpBrsVSPtmwxTDF9JVv8h79s39wuZDBToGnd5XNIpSjGDMP6FhYo6P7uPoaAZWf0PoZVV1vI="
+before_install:
+- npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+- if [ -d node_modules ] && [ x$(cat node_modules/.last-node-version 2>/dev/null) != x$(node -e 'console.log(process.version)') ]; then npm rebuild --update-binary && node -e 'console.log(process.version)' > node_modules/.last-node-version; fi
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: npm@collaborne.com
+  api_key:
+    secure: "vhknU4MKxfEwR1qKsAOOsSr1HC7OUf+rbj8u2gxwSU3ZbpvlyLcFDifVMDUiu5XAP2bivJJFRGG4jKb8o6mxPCXdMDHklOehxd1AUvH4QlxjkTkKHy01r2IYyXafGQabJhvhySgDw5LnLO4T11Q7Bfh+4r41M4PHkzIyRhIsRgxOiEPPV3D7T5kP98LdXxJSPNUbvdgbVMd5lDtGoioBEIKpslTM4oMXRxVIQ5vv81KGTejEzh8i2nv5KrQStaABQLPd03sOJq4obcR6VLiao3WThbKpV65mTvap32T0GDqisn/9bzXYcNMsQDJioejNk/C7mzWAw1bNdfl8ZB03JIEiStGde2a+wds1rAq17fmRLxnnWnXzyJf/6Kx01j+eORTlbzqVYc46PjGTJX79E5TPERsB6c3GdkSJXNmpkqKn5m40M4/mWf2s0E/ToOzQGtMju9h2vtbzO1mEgVG4fF3CDxadXco5MjwBRf0UAW1EZzgBSxQ30pshXngkImtELirhwvr3Yx4MKwRGxzXi3lFHEnp1TxUfaLUDpCKD55WC7ST0FB6GemSRfvQZ0A8ikweDbaFOMDjz4oZH8s/pt0FukBMohn+SbmP8LTRAUtu7z0sxT5d1DSyQc5HkFY6gLo6Vmslcy8i729hek+VXNd9LGBF7VDGNOoQHstH7Ks4="
+  on:
+    tags: true
+    condition: $(node -e 'console.log("v" + require("./package.json").version)') = ${TRAVIS_TAG}

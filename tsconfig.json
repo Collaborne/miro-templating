@@ -1,0 +1,9 @@
+{
+	"extends": "tsconfig-collaborne",
+	"compilerOptions": {
+		"outDir": "./build"
+	},
+	"include": [
+		"./src/**/*"
+	]
+}
