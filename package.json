@@ -3,6 +3,8 @@
   "version": "0.0.2",
   "description": "Create new Miro boards based on a template. Includes tools to create & test the templates.",
   "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
   "bugs": {
     "url": "https://github.com/Collaborne/miro-templating/issues"
   },
