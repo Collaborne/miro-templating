@@ -10,6 +10,14 @@ The repository contains as well tools to create & test the templates.
 
 ## Install
 
+### Prerequisites
+
+Ensure you have installed:
+
+* [Git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [Node & npm](https://nodejs.org/en/)
+* Sign up for a miro.com account
+
 ### Install tools
 
 Install the tools via npm:
