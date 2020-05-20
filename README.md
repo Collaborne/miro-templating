@@ -151,9 +151,9 @@ All results are marked with the `import_type` of the target area:
 }
 ```
 
-# FAQ
+## FAQ
 
-## Why do I get errors from the Miro API when creating a board based on an imported board?
+### Why do I get errors from the Miro API when creating a board based on an imported board?
 
 The Miro API supports only a subset of the UI features (e.g. transparent borders exists only in the UI). Additionally, the Miro API exports JSON that sometimes isn't support by the Miro create API (e.g. Miro export contains widgets with `borderWidth=1` wheras Miro create API forbids `borderWidth=1`).
 
