@@ -8,6 +8,8 @@ This library allows the templating of Miro boards:
 
 The repository contains as well tools to create & test the templates.
 
+This [blog post](https://medium.com/collaborne-engineering/templating-miro-com-boards-bac21271a7d9?source=friends_link&sk=b8b423bedec60517dd766f4ac7b87561) provides further information about the aim of this library.
+
 ## Install
 
 ### Prerequisites
