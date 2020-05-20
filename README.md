@@ -32,6 +32,8 @@ Following [Miro documentation](https://developers.miro.com/docs/getting-started)
 * boards:read
 * boards:write
 
+Also note the `Client id` as you will need it later on (`MIRO_CLIENT_ID`).
+
 ## Usage
 
 ### Overview
