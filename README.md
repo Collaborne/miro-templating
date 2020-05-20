@@ -62,7 +62,7 @@ The command states the path where the template was created.
 
 You can rerun the tool to update the widgets. The tool won't overwrite your configured name, etc. in the template.
 
-### Create Miro from template
+### Create Miro board from template
 
 Use this command to create a Miro board based on a template:
 
