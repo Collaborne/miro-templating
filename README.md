@@ -57,7 +57,7 @@ The command states the path where the template was created.
 
 | Parameters | Explanation |
 | ---------- | ----------- |
-| BOARD_ID | You find the board-ID in the URL of your Miro board: `https://miro.com/app/board/a2J_kuG_mO0=/` => BOARD_ID is `a2J_kuG_mO0=` |
+| BOARD_ID | You find the board-ID in the URL of your Miro board: `https://miro.com/app/board/a2J_kuG_mO0=/` => BOARD_ID is `a2J_kuG_mO0=`<br>**The board must be in the same Miro team that was choosen when creating the Miro token!** |
 | TEMPLATE_ID | ID of how to name your template, e.g. `test` |
 
 You can rerun the tool to update the widgets. The tool won't overwrite your configured name, etc. in the template.
