@@ -165,3 +165,7 @@ If you encounter one of these situations:
 Example: you can emulate a transparent border by setting `borderWidth=0` or by setting color to white (if it's shown on a white background).
 
 The Miro API community is a great starting point to investigate these situations: https://community.miro.com/search/index?tags%5B0%5D=api
+
+## Others
+
+Miro is a trademark registered by RealtimeBoard, Inc.
