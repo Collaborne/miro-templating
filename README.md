@@ -150,3 +150,18 @@ All results are marked with the `import_type` of the target area:
   ]
 }
 ```
+
+# FAQ
+
+## Why do I get errors from the Miro API when creating a board based on an imported board?
+
+The Miro API supports only a subset of the UI features (e.g. transparent borders exists only in the UI). Additionally, the Miro API exports JSON that sometimes isn't support by the Miro create API (e.g. Miro export contains widgets with `borderWidth=1` wheras Miro create API forbids `borderWidth=1`).
+
+If you encounter one of these situations:
+1. Understand from the Miro API error which widget/field causes the issue
+2. Adjust the template accordingly for this widget to prevent the error
+3. Try again to create the board
+
+Example: you can emulate a transparent border by setting `borderWidth=0` or by setting color to white (if it's shown on a white background).
+
+The Miro API community is a great starting point to investigate these situations: https://community.miro.com/search/index?tags%5B0%5D=api
