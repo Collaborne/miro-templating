@@ -109,7 +109,7 @@ The value of the placeholder is extracted from the file [sample/context.json](sa
 
 ### Define target areas for querying
 
-The following template declares a target area:
+To declare target area, add the field `metadata` with the `import_type`. For example, the following template declares a target area:
 
 ```json
 {
