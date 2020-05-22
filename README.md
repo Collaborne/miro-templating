@@ -101,7 +101,7 @@ The following template snippet includes the project name into the text of the wi
       "text": "Board for ${PROJECT_NAME}",
 ```
 
-The value of the placeholder is extracted from the file [sample/context.json]. This is for testing only. In production usage, set these values programmatically.
+The value of the placeholder is extracted from the file [sample/context.json](sample/context.json). This is for testing only. In production usage, set these values programmatically.
 
 ## Query texts from Miro board
 
