@@ -22,7 +22,6 @@
     "build": "tsc",
     "lint": "tslint -c tslint.json \"src/**/*.ts\" \"tools/**/*.ts\" \"test/**/*.ts\"",
     "test": "env LOG4JS_CONFIG=test/log4js.json TS_NODE_CACHE=false TS_NODE_FILES=true node ${_NODE_ARGS} $(npm bin)/nyc mocha",
-    "prepublish": "npm run lint && npm run build",
     "create-board": "TS_NODE_FILES=true node -r ts-node/register ${_NODE_ARGS} tools/create-board.ts",
     "create-template": "TS_NODE_FILES=true node -r ts-node/register ${_NODE_ARGS} tools/create-template.ts",
     "query-board": "TS_NODE_FILES=true node -r ts-node/register ${_NODE_ARGS} tools/query-board.ts"

@@ -12,6 +12,9 @@ env:
 before_install:
 - npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
 - if [ -d node_modules ] && [ x$(cat node_modules/.last-node-version 2>/dev/null) != x$(node -e 'console.log(process.version)') ]; then npm rebuild --update-binary && node -e 'console.log(process.version)' > node_modules/.last-node-version; fi
+before_script:
+- npm run lint
+- npm run build
 deploy:
   skip_cleanup: true
   provider: npm
