@@ -77,7 +77,7 @@
   "nyc": {
     "exclude": [
       "**/*.d.ts",
-      "build/",
+      "dist/",
       "test/"
     ],
     "all": true
