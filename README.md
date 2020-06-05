@@ -3,8 +3,9 @@
 [Miro.com](https://www.miro.com) is an online whiteboard for visual collaboration. It comes with a great UI to build and collaborate canvases. Miro offers as well an API to programmatically create new boards.
 
 This library allows the templating of Miro boards:
-- Create new boards via the Miro API based on a JSON template - including placeholders that are replaced during board creation
-- Query specific user created data within the Miro board, e.g. ideas posted in a specific box within the Miro board
+
+* Create new boards via the Miro API based on a JSON template - including placeholders that are replaced during board creation
+* Query specific user created data within the Miro board, e.g. ideas posted in a specific box within the Miro board
 
 The repository contains as well tools to create & test the templates.
 
@@ -23,7 +24,8 @@ Ensure you have installed:
 ### Install tools
 
 Install the tools via npm:
-```bash
+
+```sh
 git clone https://github.com/Collaborne/miro-templating
 npm install
 ```
@@ -31,6 +33,7 @@ npm install
 ### Create Miro token
 
 Following [Miro documentation](https://developers.miro.com/docs/getting-started) and create an access token with these permissions:
+
 * boards:read
 * boards:write
 
@@ -43,6 +46,7 @@ Also note the `Client id` as you will need it later on (`MIRO_CLIENT_ID`).
 The Miro API supports only a subset of the features exposed in the Miro UI (e.g. labels aren't available via the API). It's therefore an iterative process of creating a Miro template that looks good and works via the API.
 
 The overall process is:
+
 1. Create your ideal Miro board via the Miro UI
 2. Auto-create a template based on the Miro board
 3. Create a new Miro board based on the template
@@ -53,7 +57,8 @@ The overall process is:
 ### Auto-generate template from Miro
 
 Use this command to create a new template based on an existing Miro board:
-```bash
+
+```sh
 MIRO_TOKEN=<TOKEN> BOARD_ID=<BOARD_ID> TEMPLATE_ID=<TEMPLATE_ID> npm run create-template
 ```
 
@@ -70,7 +75,7 @@ You can rerun the tool to update the widgets. The tool won't overwrite your conf
 
 Use this command to create a Miro board based on a template:
 
-```bash
+```sh
 MIRO_TOKEN=<TOKEN> MIRO_CLIENT_ID=<CLIENT_ID> TEMPLATE_ID=<TEMPLATE_ID> npm run create-board
 ```
 
@@ -126,6 +131,7 @@ To declare target area, add the field `metadata` with the `import_type`. For exa
 You can define multiple target areas in a template. These can have the same - or different - values for `import_type`.
 
 Good to know:
+
 * The placeholder `${APP_ID}` is automatically replaced with your Miro client ID when creating the board. It's necessary to use the Miro client ID (= `APP_ID`) when creating the board and when querying it.
 * The query logic supports currently only rectangular target areas.
 * **The metadata markers are stored in Miro. This means that querying is only going to work with Miro boards that were newly created with the template. In other words: you cannot add metadata markers to existing Miro boards!**
@@ -134,7 +140,7 @@ Good to know:
 
 Use this command to create a Miro board based on a template:
 
-```bash
+```sh
 MIRO_TOKEN=<TOKEN> MIRO_CLIENT_ID=<CLIENT_ID> BOARD_ID=<BOARD_ID> npm run query-board
 ```
 
@@ -144,7 +150,8 @@ MIRO_TOKEN=<TOKEN> MIRO_CLIENT_ID=<CLIENT_ID> BOARD_ID=<BOARD_ID> npm run query-
 | BOARD_ID | You find the board-ID in the URL of your Miro board: `https://miro.com/app/board/a2J_kuG_mO0=/` => BOARD_ID is `a2J_kuG_mO0=` |
 
 All results are marked with the `import_type` of the target area:
-```
+
+```json
 {
   hits: [
     { type: 'idea', value: 'Idea 1' },
@@ -160,13 +167,14 @@ All results are marked with the `import_type` of the target area:
 The Miro API supports only a subset of the UI features (e.g. transparent borders exists only in the UI). Additionally, the Miro API exports JSON that sometimes isn't support by the Miro create API (e.g. Miro export contains widgets with `borderWidth=1` wheras Miro create API forbids `borderWidth=1`).
 
 If you encounter one of these situations:
+
 1. Understand from the Miro API error which widget/field causes the issue
 2. Adjust the template accordingly for this widget to prevent the error
 3. Try again to create the board
 
 Example: you can emulate a transparent border by setting `borderWidth=0` or by setting color to white (if it's shown on a white background).
 
-The Miro API community is a great starting point to investigate these situations: https://community.miro.com/search/index?tags%5B0%5D=api
+The Miro API community is a great starting point to investigate these situations: <https://community.miro.com/search/index?tags%5B0%5D=api>.
 
 ## Others
 
