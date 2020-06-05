@@ -26,7 +26,7 @@ Ensure you have installed:
 Install the tools via npm:
 
 ```sh
-npm install -g https://github.com/Collaborne/miro-templating
+npm install -g miro-templating
 ```
 
 ### Create Miro token
