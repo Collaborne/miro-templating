@@ -8,7 +8,7 @@
   "bin": {
     "create-miro-board": "dist/tools/create-board.js",
     "create-miro-template": "dist/tools/create-template.js",
-    "query-miro-board": "dist/tools/query-board.ts"
+    "query-miro-board": "dist/tools/query-board.js"
   },
   "bugs": {
     "url": "https://github.com/Collaborne/miro-templating/issues"
