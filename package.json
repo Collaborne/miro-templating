@@ -1,6 +1,6 @@
 {
   "name": "miro-templating",
-  "version": "1.1.0-2",
+  "version": "1.1.0",
   "description": "Create new Miro boards based on a template. Includes tools to create & test the templates.",
   "license": "Apache-2.0",
   "main": "dist/src/index.js",
