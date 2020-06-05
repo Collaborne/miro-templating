@@ -8,7 +8,7 @@ const boardId = process.env.BOARD_ID;
 
 if (!miroClientId || !miroToken || !boardId) {
 	// tslint:disable-next-line no-console
-	console.log(`Usage: MIRO_TOKEN=<TOKEN> MIRO_CLIENT_ID=<ID> BOARD_ID=<ID> npm run query-board`);
+	console.log(`Usage: MIRO_TOKEN=<TOKEN> MIRO_CLIENT_ID=<ID> BOARD_ID=<ID> query-miro-board`);
 
 	process.exit(1);
 }

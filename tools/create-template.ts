@@ -33,7 +33,7 @@ const templateId = process.env.TEMPLATE_ID;
 
 if (!miroToken || !boardId || !templateId) {
 	// tslint:disable-next-line no-console
-	console.log(`Usage: MIRO_TOKEN=<TOKEN> BOARD_ID=<ID> TEMPLATE_ID=<ID> npm run create-template`);
+	console.log(`Usage: MIRO_TOKEN=<TOKEN> BOARD_ID=<ID> TEMPLATE_ID=<ID> create-miro-template`);
 
 	process.exit(1);
 }

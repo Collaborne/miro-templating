@@ -16,7 +16,7 @@ const CONTEXT_FILENAME = 'context.json';
 
 if (!miroClientId || !miroToken || !templateId) {
 	// tslint:disable-next-line no-console
-	console.log(`Usage: MIRO_TOKEN=<TOKEN> MIRO_CLIENT_ID=<ID> TEMPLATE_ID=<ID> npm run create-board`);
+	console.log(`Usage: MIRO_TOKEN=<TOKEN> MIRO_CLIENT_ID=<ID> TEMPLATE_ID=<ID> create-miro-board`);
 
 	process.exit(1);
 }
