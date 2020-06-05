@@ -26,8 +26,7 @@ Ensure you have installed:
 Install the tools via npm:
 
 ```sh
-git clone https://github.com/Collaborne/miro-templating
-npm install
+npm install -g https://github.com/Collaborne/miro-templating
 ```
 
 ### Create Miro token
@@ -59,7 +58,7 @@ The overall process is:
 Use this command to create a new template based on an existing Miro board:
 
 ```sh
-MIRO_TOKEN=<TOKEN> BOARD_ID=<BOARD_ID> TEMPLATE_ID=<TEMPLATE_ID> npm run create-template
+MIRO_TOKEN=<TOKEN> BOARD_ID=<BOARD_ID> TEMPLATE_ID=<TEMPLATE_ID> create-miro-template
 ```
 
 The command states the path where the template was created.
@@ -76,7 +75,7 @@ You can rerun the tool to update the widgets. The tool won't overwrite your conf
 Use this command to create a Miro board based on a template:
 
 ```sh
-MIRO_TOKEN=<TOKEN> MIRO_CLIENT_ID=<CLIENT_ID> TEMPLATE_ID=<TEMPLATE_ID> npm run create-board
+MIRO_TOKEN=<TOKEN> MIRO_CLIENT_ID=<CLIENT_ID> TEMPLATE_ID=<TEMPLATE_ID> create-miro-board
 ```
 
 | Parameters | Explanation |
@@ -141,7 +140,7 @@ Good to know:
 Use this command to create a Miro board based on a template:
 
 ```sh
-MIRO_TOKEN=<TOKEN> MIRO_CLIENT_ID=<CLIENT_ID> BOARD_ID=<BOARD_ID> npm run query-board
+MIRO_TOKEN=<TOKEN> MIRO_CLIENT_ID=<CLIENT_ID> BOARD_ID=<BOARD_ID> query-miro-board
 ```
 
 | Parameters | Explanation |

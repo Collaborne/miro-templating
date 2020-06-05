@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "Create new Miro boards based on a template. Includes tools to create & test the templates.",
   "license": "Apache-2.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "bin": {
+    "create-miro-board": "dist/tools/create-board.js",
+    "create-miro-template": "dist/tools/create-template.js",
+    "query-miro-board": "dist/tools/query-board.ts"
+  },
   "bugs": {
     "url": "https://github.com/Collaborne/miro-templating/issues"
   },
