@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { queryWidgets } from '../src/miro/miro-manager';
 
 const miroClientId = process.env.MIRO_CLIENT_ID;

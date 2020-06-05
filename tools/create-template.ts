@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import fs from 'fs';
 import _ from 'lodash';
 import mkdirp from 'mkdirp';
