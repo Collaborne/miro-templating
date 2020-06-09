@@ -22,9 +22,9 @@
     "build": "tsc",
     "lint": "tslint -c tslint.json \"src/**/*.ts\" \"tools/**/*.ts\" \"test/**/*.ts\"",
     "test": "env LOG4JS_CONFIG=test/log4js.json TS_NODE_CACHE=false TS_NODE_FILES=true node ${_NODE_ARGS} $(npm bin)/nyc mocha",
-    "create-board": "TS_NODE_FILES=true node -r ts-node/register ${_NODE_ARGS} tools/create-board.ts",
-    "create-template": "TS_NODE_FILES=true node -r ts-node/register ${_NODE_ARGS} tools/create-template.ts",
-    "query-board": "TS_NODE_FILES=true node -r ts-node/register ${_NODE_ARGS} tools/query-board.ts"
+    "create-board": "cross-env-shell TS_NODE_FILES=true \"node -r ts-node/register ${_NODE_ARGS} tools/create-board.ts\"",
+    "create-template": "cross-env-shell TS_NODE_FILES=true \"node -r ts-node/register ${_NODE_ARGS} tools/create-template.ts\"",
+    "query-board": "cross-env-shell TS_NODE_FILES=true \"node -r ts-node/register ${_NODE_ARGS} tools/query-board.ts\""
   },
   "files": [
     "src/",
@@ -55,6 +55,7 @@
     "@types/request": "^2.48.4",
     "@types/request-promise-native": "^1.0.17",
     "check-node-version": "^3.0.0",
+    "cross-env": "^7.0.2",
     "lodash": "^4.17.15",
     "log4js": "^6.0.0",
     "marked": "^1.1.0",
