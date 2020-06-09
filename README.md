@@ -55,6 +55,18 @@ The overall process is:
 5. Remove/adjust parts in the template that don't work via the API
 6. Repeat steps 2-5 until the template looks good
 
+#### Note for Windows
+
+The example commands are written with a Unix/Linux shell in mind, `VAR1=value1 VAR2=value2 command` reads as "run `command` with the environment variables `VAR1` and `VAR2` set to the given values". On Windows with the `cmd` shell this translates to multiple commands:
+
+```cmd
+set VAR1=value1
+set VAR2=value2
+command
+set "VAR1="
+set "VAR2="
+```
+
 ### Auto-generate template from Miro
 
 Use this command to create a new template based on an existing Miro board:
