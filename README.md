@@ -29,6 +29,8 @@ Install the tools via npm:
 npm install -g miro-templating
 ```
 
+_Note that installing packages globally may require administrative privileges._
+
 ### Create Miro token
 
 Following [Miro documentation](https://developers.miro.com/docs/getting-started) and create an access token with these permissions:
