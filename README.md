@@ -166,9 +166,9 @@ All results are marked with the `import_type` of the target area:
 
 ```json
 {
-  hits: [
-    { type: 'idea', value: 'Idea 1' },
-    { type: 'idea', value: 'Idea 2' }
+  "hits": [
+    { "type": "idea", "value": "Idea 1" },
+    { "type": "idea", "value": "Idea 2" }
   ]
 }
 ```
