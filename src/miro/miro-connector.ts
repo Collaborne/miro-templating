@@ -9,7 +9,7 @@ import { MiroWidget } from '../types/miro';
  * The connector provides low level Miro functionality
  */
 
-const MIRO_ENDPOINT = 'https://api.miro.com/v1';
+const MIRO_ENDPOINT = 'https://api.miro.com/v2';
 
 const logger = getLogger('miro-connector');
 
