@@ -2,7 +2,9 @@
 	"extends": "tsconfig-collaborne",
 	"compilerOptions": {
 		"declaration": true,
-		"outDir": "./dist"
+		"outDir": "./dist",
+		// Required for Miro SDK (ReadableStream)
+		"lib": ["DOM"]
 	},
 	"include": [
 		"src",
