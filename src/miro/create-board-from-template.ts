@@ -168,6 +168,7 @@ export async function createBoardFromTemplate(
 
 	console.log(`Filling ${itemsWithPlaceholder.length} placeholders...`);
 
+	let nrStickies = 0;
 	for (const item of itemsWithPlaceholder) {
 		const placeholderDatas = await req.getPlaceholderData({
 			query: item.placeholder!.query,
@@ -184,7 +185,11 @@ export async function createBoardFromTemplate(
 				console.error(`Failed to create sticky note: ${JSON.stringify(e)}`);
 			}
 		});
+
+		nrStickies += requests.length;
 	}
+
+	console.log(`Created ${nrStickies} stickies`);
 
 	return {
 		boardId: board.id,
