@@ -37,6 +37,7 @@
     "node": ">=12.13.0"
   },
   "devDependencies": {
+    "@types/async": "^3.2.24",
     "@types/jest": "^29.5.11",
     "@types/mkdirp": "^1.0.0",
     "@types/node": "^14.14.25",
@@ -55,13 +56,13 @@
     "@types/marked": "^0.7.3",
     "@types/request": "^2.48.4",
     "@types/request-promise-native": "^1.0.17",
+    "async": "^3.2.5",
     "check-node-version": "^3.0.0",
     "cross-env": "^7.0.2",
     "log4js": "^6.0.0",
     "marked": "^1.1.0",
     "mkdirp": "^1.0.4",
     "npm-warn-shrinkwrap": "^1.0.2",
-    "p-iteration": "^1.1.8",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.8",
     "source-map-support": "^0.5.6"

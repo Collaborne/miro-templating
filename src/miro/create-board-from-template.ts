@@ -10,7 +10,7 @@ import {
 	StickyNoteCreateRequest,
 	TextCreateRequest,
 } from '@mirohq/miro-api/dist/api';
-import { mapSeries } from 'p-iteration';
+import { eachLimit } from 'async';
 
 import {
 	Placeholder,
@@ -24,6 +24,10 @@ import { getStickyPositions } from './sticky-layout';
 
 const MAX_STICKY_SIZE_PX = 100;
 const STICKY_SEPATATION_PX = 5;
+
+// Parallizing speeds up execution but it increases the risk that items are not correctly layed on top of each other
+// For example, frames need to be below stickies.
+const MAX_WORKERS = 3;
 
 /**
  * The manager provides high-level functionlity to interact with Miro
@@ -132,7 +136,7 @@ export async function createBoardFromTemplate(
 
 	// Ensure that widgets are created in pre-defined order. This is important
 	// to have them overlap in the expected way.
-	await mapSeries(req.template.items, async item => {
+	const handleItem = async (item: TemplateItem) => {
 		const { id, type, placeholder, ...data } = item;
 
 		const toBeCreatedItem = { type, ...data };
@@ -155,7 +159,12 @@ export async function createBoardFromTemplate(
 				)}: ${JSON.stringify(e)}`,
 			);
 		}
-	});
+	};
+
+	const itemsWithoutParents = req.template.items.filter(item => !item.parent);
+	const itemsWithParent = req.template.items.filter(item => item.parent);
+	await eachLimit(itemsWithoutParents, MAX_WORKERS, handleItem);
+	await eachLimit(itemsWithParent, MAX_WORKERS, handleItem);
 
 	console.log(`Filling ${itemsWithPlaceholder.length} placeholders...`);
 
@@ -168,9 +177,9 @@ export async function createBoardFromTemplate(
 		const itemMiroId = idMapper.get(item.id);
 		const requests = toStickyNoteRequests(itemMiroId!, item, placeholderDatas);
 
-		for (const request of requests) {
-			await board.createStickyNoteItem(request);
-		}
+		await eachLimit(requests, MAX_WORKERS, request =>
+			board.createStickyNoteItem(request),
+		);
 	}
 
 	return {
