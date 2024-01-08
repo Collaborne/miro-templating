@@ -5,6 +5,7 @@
   "license": "Apache-2.0",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
+  "source": "src/index.ts",
   "bin": {
     "create-miro-board": "dist/tools/create-board.js",
     "create-miro-template": "dist/tools/create-template.js",
@@ -28,7 +29,7 @@
   },
   "files": [
     "src/",
-    "tslint.json",
+    "eslint.json",
     "tsconfig*.json",
     "dist/"
   ],
