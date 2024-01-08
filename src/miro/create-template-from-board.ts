@@ -5,15 +5,11 @@ import {
 	StickyNoteData,
 } from '@mirohq/miro-api/dist/api';
 import { WidgetItem } from '@mirohq/miro-api/dist/highlevel/Item';
-// eslint-disable-next-line @typescript-eslint/naming-convention
-import TurndownService from 'turndown';
 
 import { Template, TemplateItem } from '../types/types';
 import { createIdGenerator } from '../utils/id-mapping';
 
 const MARKER_PLACEHOLDER = '!PLACEHOLDER!';
-
-const turndownService = new TurndownService();
 
 // Prevent error: Only height or width should be passed for widgets with fixed aspect ratio
 function fixRemoveDimensionsFromItemWithFixedAspectRatio(item: TemplateItem) {
@@ -59,14 +55,13 @@ function extractPlaceholder(item: TemplateItem) {
 	if (item.type === 'frame') {
 		const data = item.data as FrameData;
 		if (data?.title?.includes(MARKER_PLACEHOLDER)) {
-			const contentMarkdown = turndownService.turndown(data.title);
-			const contentWithoutMarker = contentMarkdown
-				.replace(MARKER_PLACEHOLDER, '')
-				.replace(/\\_/g, '_');
+			// Strip out non-JSON content
+			const contentJsonString = data.title.replace(/[^{]*({.*})[^}]*/, '$1');
+			const decodedJsonString = contentJsonString.replace(/&#34;/g, '"');
 			try {
-				item.placeholder = JSON.parse(contentWithoutMarker);
+				item.placeholder = JSON.parse(decodedJsonString);
 			} catch (e) {
-				console.warn(`Failed to parse placeholder ${contentWithoutMarker}`);
+				console.warn(`Failed to parse placeholder ${decodedJsonString}`);
 			}
 
 			data.title = '';
