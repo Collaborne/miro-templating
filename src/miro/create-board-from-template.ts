@@ -31,7 +31,6 @@ const STICKY_SEPATATION_PX = 5;
 
 export interface CreateBoardRequest {
 	accessToken: string;
-	miroAppId: string;
 	template: Template;
 	getPlaceholderData: (
 		placeholder: Pick<Placeholder, 'query' | 'limit'>,

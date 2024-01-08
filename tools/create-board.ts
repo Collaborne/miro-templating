@@ -7,15 +7,12 @@ import { Placeholder, PlaceholderData, createBoardFromTemplate } from '../src';
 
 import { TEMPLATES_DIR } from './consts';
 
-const miroClientId = process.env.MIRO_CLIENT_ID;
 const miroToken = process.env.MIRO_TOKEN;
 const templateId = process.env.TEMPLATE_ID;
 
-if (!miroClientId || !miroToken || !templateId) {
+if (!miroToken || !templateId) {
 	// tslint:disable-next-line no-console
-	console.log(
-		`Usage: MIRO_TOKEN=<TOKEN> MIRO_CLIENT_ID=<ID> TEMPLATE_ID=<ID> create-miro-board`,
-	);
+	console.log(`Usage: MIRO_TOKEN=<TOKEN> TEMPLATE_ID=<ID> create-miro-board`);
 
 	process.exit(1);
 }
@@ -43,7 +40,6 @@ async function main() {
 	try {
 		const { boardId, viewLink } = await createBoardFromTemplate({
 			accessToken: miroToken!,
-			miroAppId: miroClientId!,
 			template,
 			getPlaceholderData,
 		});
