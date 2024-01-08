@@ -1,14 +1,3 @@
-import {
-	createCanvas,
-	Query,
-	queryWidgets,
-	QueryWidgetsResponse,
-} from './miro/miro-manager';
-
-export {
-	createCanvas,
-	queryWidgets,
-
-	Query,
-	QueryWidgetsResponse,
-};
+export * from './miro/create-board-from-template';
+export * from './miro/create-template-from-board';
+export * from './types/types';
