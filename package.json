@@ -1,6 +1,6 @@
 {
   "name": "miro-templating",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Create new Miro boards based on a template. Includes tools to create & test the templates.",
   "license": "Apache-2.0",
   "main": "dist/src/index.js",
@@ -21,8 +21,8 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint \"**/*.ts\" \"tools/**/*.ts\"",
-		"test": "npm run lint && npm run test:unit",
-		"test:unit": "jest --maxWorkers=50%",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "jest --maxWorkers=50%",
     "create-board": "cross-env-shell TS_NODE_FILES=true \"node -r ts-node/register ${_NODE_ARGS} tools/create-board.ts\"",
     "create-template": "cross-env-shell TS_NODE_FILES=true \"node -r ts-node/register ${_NODE_ARGS} tools/create-template.ts\""
   },
