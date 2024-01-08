@@ -177,9 +177,13 @@ export async function createBoardFromTemplate(
 		const itemMiroId = idMapper.get(item.id);
 		const requests = toStickyNoteRequests(itemMiroId!, item, placeholderDatas);
 
-		await eachLimit(requests, MAX_WORKERS, request =>
-			board.createStickyNoteItem(request),
-		);
+		await eachLimit(requests, MAX_WORKERS, async request => {
+			try {
+				await board.createStickyNoteItem(request);
+			} catch (e) {
+				console.error(`Failed to create sticky note: ${JSON.stringify(e)}`);
+			}
+		});
 	}
 
 	return {
