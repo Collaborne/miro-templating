@@ -3,10 +3,8 @@
 	"compilerOptions": {
 		"declaration": true,
 		"noEmit": false,
-		"outDir": "./dist",
-		// Required for Miro SDK (ReadableStream)
-		"lib": ["DOM"]
+		"outDir": "./dist"
 	},
 	"include": ["src", "tools"],
-	"exclude": ["node_modules", "dist", "src/*/__tests__/*"]
+	"exclude": ["node_modules", "dist"]
 }
