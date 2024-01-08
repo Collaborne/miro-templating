@@ -2,5 +2,6 @@
 /dist/
 /templates/
 /.nyc_output/
+/coverage/
 
 package-lock.json
