@@ -25,9 +25,10 @@ import { getStickyPositions } from './sticky-layout';
 const MAX_STICKY_SIZE_PX = 100;
 const STICKY_SEPATATION_PX = 5;
 
+const MAX_WORKERS = 10;
 // Parallizing speeds up execution but it increases the risk that items are not correctly layed on top of each other
 // For example, frames need to be below stickies.
-const MAX_WORKERS = 3;
+const MAX_WORKERS_POSSIBLE_OVERLAP = 3;
 
 /**
  * The manager provides high-level functionlity to interact with Miro
@@ -163,8 +164,12 @@ export async function createBoardFromTemplate(
 
 	const itemsWithoutParents = req.template.items.filter(item => !item.parent);
 	const itemsWithParent = req.template.items.filter(item => item.parent);
-	await eachLimit(itemsWithoutParents, MAX_WORKERS, handleItem);
-	await eachLimit(itemsWithParent, MAX_WORKERS, handleItem);
+	await eachLimit(
+		itemsWithoutParents,
+		MAX_WORKERS_POSSIBLE_OVERLAP,
+		handleItem,
+	);
+	await eachLimit(itemsWithParent, MAX_WORKERS_POSSIBLE_OVERLAP, handleItem);
 
 	console.log(`Filling ${itemsWithPlaceholder.length} placeholders...`);
 
