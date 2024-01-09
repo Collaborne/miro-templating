@@ -114,6 +114,16 @@ function toStickyNoteRequests(
 	});
 }
 
+function createStickyNote(board: Board) {
+	return async (request: StickyNoteCreateRequest) => {
+		try {
+			await board.createStickyNoteItem(request);
+		} catch (e) {
+			console.error(`Failed to create sticky note: ${JSON.stringify(e)}`);
+		}
+	};
+}
+
 const idMapper = createIdMapper();
 
 /**
@@ -173,7 +183,7 @@ export async function createBoardFromTemplate(
 
 	console.log(`Filling ${itemsWithPlaceholder.length} placeholders...`);
 
-	let nrStickies = 0;
+	const createStickyRequests: StickyNoteCreateRequest[] = [];
 	for (const item of itemsWithPlaceholder) {
 		const placeholderDatas = await req.getPlaceholderData({
 			query: item.placeholder!.query,
@@ -182,19 +192,12 @@ export async function createBoardFromTemplate(
 
 		const itemMiroId = idMapper.get(item.id);
 		const requests = toStickyNoteRequests(itemMiroId!, item, placeholderDatas);
-
-		await eachLimit(requests, MAX_WORKERS, async request => {
-			try {
-				await board.createStickyNoteItem(request);
-			} catch (e) {
-				console.error(`Failed to create sticky note: ${JSON.stringify(e)}`);
-			}
-		});
-
-		nrStickies += requests.length;
+		createStickyRequests.push(...requests);
 	}
 
-	console.log(`Created ${nrStickies} stickies`);
+	await eachLimit(createStickyRequests, MAX_WORKERS, createStickyNote(board));
+
+	console.log(`Created ${createStickyRequests.length} stickies`);
 
 	return {
 		boardId: board.id,
